@@ -29,12 +29,6 @@ public class Term implements Comparable<Term> {
 		return new ReverseWeightOrder();
 	}//end byReverseWeightOrder
 	
-	/* defining a nested class for the reverse order */
-	private static class ReverseWeightOrder implements Comparator <Term>{
-		public int compare (Term q1, Term q2) {
-			return q1.weight - q2.weight; //int used for ordering
-		}
-	}
 	
 	
 	/* Compares the two terms in lexicographic order but using only the first
@@ -43,46 +37,12 @@ public class Term implements Comparable<Term> {
 		if (r < 0) {
 			throw new java.lang.IllegalArgumentException(); //exception handling
 		}
-		
-		
-		
-		
-		
+		return new PrefixOrder();
 	}//end by PrefixOrder 
 	
 	/* compares the two terms in lexicographic order by query */
 	public int compareTo(Term that) {
-		/*if (this.query < that.query) {
-			return -1;
-		}
-		if (this.query > that.query) {
-			return 1;
-		}*/
-		int len_str1 = this.query.length();
-		int len_str2 = that.query.length();
-		int min;
-		
-		if (len_str1 < len_str2) {
-			min = len_str1;
-		} else {
-			min = len_str2;
-		}
-		
-		for (int i = 0; i < min; i++) {
-			int str1 = (int) this.query.charAt(i); /* parse through the strings for comparison at each corresponding letter */ 
-			int str2 = (int) that.query.charAt(i);
-			
-			if (str1 != str2) {
-				return str1 - str2;
-			}
-		}//end for
-		
-		if (len_str1 != len_str2) {
-			return len_str1 - len_str2;
-		} else {
-			return 0; //both the strings must be the same if this executes 
-		}
-		
+		return this.query.compareTo(that.query);
 	}//end compareTo
 	
 	/*
@@ -91,11 +51,54 @@ public class Term implements Comparable<Term> {
 	 *  
 	 */
 	public String toString() {
-		return this.query;  //???????????????????????????????????????????
+		return this.query + "\t" + query;
 	}//end toString
 	
 	
 }//end class Term
+
+private static class ReverseWeightOrder implements Comparator<Term>{ /* nested class for reverse weight order */
+	public int compare(Term x, Term y) {
+		if (x.weight > y.weight) {
+			return -1;
+		}
+		else if (x.weight == y.weight) {
+			return 0;
+		}
+		else {
+			return 1; // x.weight < y.weight
+		}
+	}//end compare
+	
+	
+}//end ReverseWeightOrder 
+
+private static class PrefixOrder implements Comparator<Term>{ /* nested class for prefix order */
+	private int x;
+	
+	private PrefixOrder(int y){
+		this.y = y;
+	}
+	
+	public int compare(Term q1, Term q2) {
+		String s1;
+		String s2;
+		if (q1.query.length() < x) {
+			s1 = q1.query;
+		} else {
+			s1 = q1.query.substring(0, x);
+		}
+		
+		if (q2.query.length() < x) {
+			s2 = q2.query;
+		} else {
+			s2 = q2.query.substring(0, x);
+		}
+		
+		return s1.compareTo(s2);
+	}
+	
+}//end PrefixOrder class 
 
 
 

@@ -29,13 +29,12 @@ public class Term implements Comparable<Term> {
 		return new ReverseWeightOrder();
 	}//end byReverseWeightOrder
 	
-	/* defingi a nested class for the reverse order */
+	/* defining a nested class for the reverse order */
 	private static class ReverseWeightOrder implements Comparator <Term>{
 		public int compare (Term q1, Term q2) {
-			if (q1.weight < q2.weight) {
-				
-			}
+			return q1.weight - q2.weight; //int used for ordering
 		}
+	}
 	
 	
 	/* Compares the two terms in lexicographic order but using only the first
@@ -97,3 +96,8 @@ public class Term implements Comparable<Term> {
 	
 	
 }//end class Term
+
+
+
+
+

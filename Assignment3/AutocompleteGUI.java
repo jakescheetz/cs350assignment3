@@ -77,7 +77,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
 
-// test comment
+// test comment 2
 public class AutocompleteGUI extends JFrame {
     // for serializable classes
     private static final long serialVersionUID = 1L;

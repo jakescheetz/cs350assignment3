@@ -1,13 +1,16 @@
 // implement sorting algorithm in this class
 public class Autocomplete {
 
-
-	//////
 	// initializes the data structure from the given array of terms.
 	public Autocomplete(Term[] terms) {
-		this.terms = terms; 
-		//TODO Sort terms in lexicographic order
+		//creates copy of term array to be sorted
+		this.terms = new Term[terms.length]; 
+		for (i = 0; i < terms.length; i++) {
+			this.terms[i]=terms[i];
+		}
 		
+		// Lexicographic sort
+		sort(this.terms, aux, 0, terms.length);
 	}
 	
 	

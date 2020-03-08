@@ -2,7 +2,7 @@
 public class Autocomplete {
 
 
-	
+	//
 	// initializes the data structure from the given array of terms.
 	public Autocomplete(Term[] terms) {
 		this.terms = terms; 

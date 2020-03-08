@@ -19,8 +19,8 @@ public class BinarySearchDeluxe {
 	  if (a == null || key == null || comparator == null) throw new java.lang.NullPointerException;
 	  // create instance variables 
 	  int lo = 0, int hi = a.length -1, int mid;
-	  // checks to see if the first and last have the same value
-	  if (comparator.compare(a[lo], hi) == 0) { return 0; }
+	  // checks to see if the 0th index matches the key
+	  if (comparator.compare(a[lo], key) == 0) { return 0; }
 	  
 	  while (lo <= hi) {
 		  mid = lo + (hi - lo) / 2;
@@ -45,7 +45,7 @@ public class BinarySearchDeluxe {
 	  if (a == null || key == null || comparator == null) throw new java.lang.NullPointerException;
 	  // create instance variables 
 	  int lo = 0, int hi = a.length -1, int mid;
-	  // checks to see if the first and last have the same value
+	  // checks to see if the last index matches the key
 	  if (comparator.compare(a[hi], key) == 0) { return 0; }
 	  
 	  while (lo <= hi) {

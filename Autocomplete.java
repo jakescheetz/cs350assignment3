@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // implement sorting algorithm in this class
 public class Autocomplete {
 
@@ -10,22 +12,31 @@ public class Autocomplete {
 		}
 		
 		// Lexicographic sort
-		sort(this.terms, aux, 0, terms.length);
+		Merge.sort(terms, this.terms, 0, this.terms.length);
 	}
 	
 	
 	
 	// returns all terms that start with the given prefix, in descending order by weight.
 	public Term[] allMatches(String prefix) {
-
+		
+		// Exception for null prefix
+		if (prefix==null) throw new java.lang.NullPointerException();
+		
 		// Find first and last index of matching terms with query (binary search)
+		int first_match = BinarySearchDeluxe.firstIndexOf(terms, prefix, byPrefixOrder);
+		// Return if no matches are found
+		if (first_match == -1) return new Term[0];
+		int last_match = BinarySearchDeluxe.lastIndexOf(terms, prefix, byPrefixOrder);
+		
+		// New array of matching terms
+		Term[] termArray = new Term[last_match-first_match+1];
+		for (int k = first_match; k < termArray.length; k++) {
+			termArray[k] = terms[first_match+k];
+		}
 		
 		// Return list of matching terms in descending order by weight (sort)
-		
-		
-		
-		Term[] termArray;
-		Term[] sortedTerms;
+		Arrays.Sort(termArray,Term.byReverseWeightOrder);
 		
 		return termArray;
 	}

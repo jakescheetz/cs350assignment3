@@ -15,20 +15,53 @@ public class BinarySearchDeluxe {
 
   /* Returns the index of the first key in a[] that equals the search key, or -1 if no such key. */
   public  static  <Key>  int  firstIndexOf(Key[]  a,  Key  key,  Comparator<Key> comparator) {
-	  // if any of the arguments passed to firstIndexOf are null then this will throw java.lang.NullPointerException
-	  if (a == null || key == null || comparator == null) throw new java.lang.NullPointerException;
-	  // create instance variables 
-	  int lo = 0, int hi = a.length -1, int mid;
-	  // 
-	  if (comparator.compare(a[lo], hi) == 0) { return 0; }
-	  
-	  while (lo <= hi) {
-		  mid = lo + (hi - lo) / 2;
+	// if any of the arguments passed to firstIndexOf are null then this will throw java.lang.NullPointerException
+		  if (a == null || key == null || comparator == null) throw new java.lang.NullPointerException;
+		  // create instance variables 
+		  int lo = 0, int hi = a.length -1, int mid;
+		  // checks to see if the first and last have the same value
+		  if (comparator.compare(a[lo], hi) == 0) { return 0; }
 		  
-		  if (comparator.compare(key, a[mid]) < 0)
-	  }
+		  while (lo <= hi) {
+			  mid = lo + (hi - lo) / 2;
+			  
+			  if (comparator.compare(key, a[mid]) < 0) {
+				  hi = mid - 1;
+			  } else if (comparator.compare(key, a[mid]) > 0) {
+				  lo = mid + 1;
+			  } else if (comparator.compare(a[mid - 1], a[mid]) == 0) {
+				  hi = mid - 1;
+			  } else {
+				  return mid;
+			  }
+		  }
+		  
+		  return -1;
   }
   
   /* Returns the index of the last key in a[] that equals the search key, or -1 if no such key. */
-  public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator)
+  public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
+	// if any of the arguments passed to firstIndexOf are null then this will throw java.lang.NullPointerException
+		  if (a == null || key == null || comparator == null) throw new java.lang.NullPointerException;
+		  // create instance variables 
+		  int lo = 0, int hi = a.length -1, int mid;
+		  // checks to see if the first and last have the same value
+		  if (comparator.compare(a[hi], key) == 0) { return 0; }
+		  
+		  while (lo <= hi) {
+			  mid = lo + (hi - lo) / 2;
+			  
+			  if (comparator.compare(key, a[mid]) < 0) {
+				  hi = mid - 1;
+			  } else if (comparator.compare(key, a[mid]) > 0) {
+				  lo = mid + 1;
+			  } else if (comparator.compare(a[mid + 1], a[mid]) == 0) {
+				  hi = mid - 1;
+			  } else {
+				  return mid;
+			  }
+		  }
+		  
+		  return -1;
+  }
 }

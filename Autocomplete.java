@@ -21,7 +21,7 @@ public class Merge{ //for running time (n log n)
 		merge(a, aux, lo, mid, hi);
 	}//end sort
 	
-	//merge for merge sort
+	//merge for merge sort, runtime n log n
 	public static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
 		for (k = lo; k <= hi; k++) {
 			aux[k] = a[k];

@@ -1,3 +1,15 @@
+/*
+ *
+ * Names: Jacob Scheetz, Ian Iding, Bailey Dauterman (scheetzj2, idingi1, dautermanb1)
+ * 
+ * Assignment: assignment3 - autocomplete
+ * 
+ * Description: use of searching and sorting algorithms to create a autocomplete search bar. This also utilized nested classes and generics. 
+ * 
+ * Bug Report: Program occasionally has trouble with sorting algorithm when spaces are read from the line. The program can only take one input at a time. 
+ *
+ */
+
 import java.util.*;
 import java.lang.*;
 

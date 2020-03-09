@@ -23,19 +23,16 @@ public class Autocomplete {
 	
 	// returns all terms that start with the given prefix, in descending order by weight.
 	public Term[] allMatches(String prefix) {
-		Term queryTerm = new Term(prefix, 1);
 		
 		
 		// Exception for null prefix
 		if (prefix==null) throw new java.lang.NullPointerException();
 		
 		// Find first and last index of matching terms with query (binary search)
-		int first_match = BinarySearchDeluxe.firstIndexOf(terms, queryTerm, Term.byPrefixOrder(5));
-		System.out.println(terms[first_match].query);
+		int first_match = BinarySearchDeluxe.firstIndexOf(terms, new Term(prefix, 5), Term.byPrefixOrder(prefix.length()));
 		// Return if no matches are found
 		if (first_match == -1) return new Term[0];
-		int last_match = BinarySearchDeluxe.lastIndexOf(terms, queryTerm, Term.byPrefixOrder(5));
-		System.out.println(terms[last_match].query);
+		int last_match = BinarySearchDeluxe.lastIndexOf(terms, new Term(prefix, 5), Term.byPrefixOrder(prefix.length()));
 		
 		// New array of matching terms
 

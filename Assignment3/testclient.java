@@ -13,9 +13,10 @@ public class testclient {
 			String query = in.readLine();
 			terms[i] = new Term(query,weight);
 		}
+		
 
 		int k = Integer.parseInt(args[1]);
-		autocomplete = new Autocomplete(terms);
+		Autocomplete autocomplete = new Autocomplete(terms);
 		while (StdIn.hasNextLine()) {
 			String prefix = StdIn.readLine();
 			Term[] results = autocomplete.allMatches(prefix);

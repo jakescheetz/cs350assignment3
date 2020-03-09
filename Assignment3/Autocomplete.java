@@ -31,22 +31,23 @@ public class Autocomplete {
 		
 		// Find first and last index of matching terms with query (binary search)
 		int first_match = BinarySearchDeluxe.firstIndexOf(terms, queryTerm, Term.byPrefixOrder(5));
+		System.out.println(terms[first_match].query);
 		// Return if no matches are found
 		if (first_match == -1) return new Term[0];
 		int last_match = BinarySearchDeluxe.lastIndexOf(terms, queryTerm, Term.byPrefixOrder(5));
+		System.out.println(terms[last_match].query);
 		
 		// New array of matching terms
+
 		Term[] termArray = new Term[last_match-first_match+1];
-		for (int k = first_match; k < termArray.length; k++) {
+		for (int k = 0; k < termArray.length; k++) {
 			termArray[k] = terms[first_match+k];
 		}
 		
+	
 		// Return list of matching terms in descending order by weight (sort)
-		Arrays.sort(termArray,Term.byReverseWeightOrder());
-		
-		for(int i = 0; i < 20; i++) {
-			System.out.println(termArray[i].query);
-		}
+		Arrays.sort(termArray, Term.byReverseWeightOrder());
+
 		
 		return termArray;
 	}

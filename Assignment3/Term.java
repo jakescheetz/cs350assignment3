@@ -51,7 +51,7 @@ public class Term implements Comparable<Term> {
 	 *  
 	 */
 	public String toString() {
-		return this.query + "\t" + this.weight;
+		return this.weight + "\t" + this.query;
 	}//end toString
 	
 	
@@ -101,26 +101,6 @@ public class Term implements Comparable<Term> {
 		}
 		
 	}//end PrefixOrder class 
-
-	
-	
-//	public static void main(String args[]) {
-//		Term[] terms = {new Term("Debbie", 3), new Term("Abcd", 8), new Term("Cathy", 155555), new Term("Abbcd", 3323231)};
-//		for (Term term : terms) System.out.println(term);
-//		System.out.println();
-//		
-//		Arrays.sort(terms, Term.byReverseWeightOrder());
-//		for (Term term : terms) System.out.println(term);
-//		System.out.println();
-//		
-//		Arrays.sort(terms, Term.byPrefixOrder(2));
-//		for (Term term : terms) System.out.println(term);
-//		System.out.println();
-//		
-//		Arrays.sort(terms);
-//		for (Term term : terms) System.out.println(term);
-//	
-//	}
 
 
 }//end class Term

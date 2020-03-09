@@ -62,7 +62,7 @@ public class Autocomplete {
 	}
 
 
-
+/* realized we didn't need to implement this, Arrays.sort is order n log n worst case */
 //public class Merge{ //for running time (n log n)
 //	
 //	//sort for merge sort, recursively 
